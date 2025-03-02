@@ -1,6 +1,6 @@
 import styles from './Options.module.scss'
 
-export default function Options({ feedbacks, setFeedback, totalFeedback, hasReset }) {
+export default function Options({ feedbacks, setFeedback, total, hasReset }) {
   return (
     <div className={styles.container}>
       <div className={styles.feedbacks}>
@@ -14,7 +14,7 @@ export default function Options({ feedbacks, setFeedback, totalFeedback, hasRese
           </button>
         ))}
       </div>
-      {hasReset && !!totalFeedback && (
+      {hasReset && !!total && (
         <button className={styles.button} onClick={() => setFeedback({ good: 0, neutral: 0, bad: 0 })}>
           Reset
         </button>

@@ -28,7 +28,7 @@ export default function App() {
         title={'Sip Happens Café'}
         caption={'Please leave your feedback about our service by selecting one of the options below.'}
       />
-      <Options feedbacks={feedback} setFeedback={setFeedback} totalFeedback={totalFeedback} hasReset />
+      <Options feedbacks={feedback} setFeedback={setFeedback} total={totalFeedback} hasReset />
       {totalFeedback ? (
         <Feedback feedbacks={feedback} total={totalFeedback} positive={positivePercentage} />
       ) : (
