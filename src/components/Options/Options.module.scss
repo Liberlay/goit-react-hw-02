@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  min-height: 135px;
+
+  .feedbacks {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 32px;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 50px;
+    border-radius: 12px;
+    font-size: 22px;
+    text-transform: capitalize;
+    background-color: #9221b4;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.2);
+      background-color: #300eca;
+    }
+  }
+}
