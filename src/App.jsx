@@ -15,12 +15,27 @@ export default function App() {
     return keys ? JSON.parse(keys) : { good: 0, neutral: 0, bad: 0 }
   })
 
+  const totalFeedback = feedback.good + feedback.neutral + feedback.bad
+  const positivePercentage = Math.round((feedback.good / totalFeedback) * 100)
+
+  const updateFeedback = (type) => {
+    setFeedback((obj) => ({
+      ...obj,
+      [type]: (obj[type] += 1),
+    }))
+  }
+
+  const resetFeedback = () => {
+    setFeedback({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    })
+  }
+
   useEffect(() => {
     window.localStorage.setItem('keys', JSON.stringify(feedback))
   }, [feedback])
-
-  const totalFeedback = feedback.good + feedback.neutral + feedback.bad
-  const positivePercentage = Math.round((feedback.good / totalFeedback) * 100)
 
   return (
     <div className={styles.container}>
@@ -28,7 +43,13 @@ export default function App() {
         title={'Sip Happens Café'}
         caption={'Please leave your feedback about our service by selecting one of the options below.'}
       />
-      <Options feedbacks={feedback} setFeedback={setFeedback} total={totalFeedback} hasReset />
+      <Options
+        feedbacks={feedback}
+        total={totalFeedback}
+        setFeedback={setFeedback}
+        updateFeedback={updateFeedback}
+        resetFeedback={resetFeedback}
+      />
       {totalFeedback ? (
         <Feedback feedbacks={feedback} total={totalFeedback} positive={positivePercentage} />
       ) : (
